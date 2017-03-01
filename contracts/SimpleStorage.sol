@@ -5,7 +5,7 @@ contract SimpleStorage {
 
   function SimpleStorage(/* uint initialValue */) {
     /*storedData = initialValue;*/
-    storedData = 20;
+    storedData = 10;
   }
 
   function set(uint x) {

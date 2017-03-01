@@ -27,3 +27,4 @@ install:
 
 script:
   - npm run test-contracts
+  - npm run test-web
