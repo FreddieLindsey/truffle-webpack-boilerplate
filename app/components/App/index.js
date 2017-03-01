@@ -66,6 +66,7 @@ class App extends Component {
       console.dir(v)
       let state = self.state
       state.contracts.SimpleStorage.value = newValue
+      self.textInput.value = ''
       self.setState(state)
     }).catch((err) => {
       console.dir(err)
