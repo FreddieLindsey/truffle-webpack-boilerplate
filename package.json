@@ -57,6 +57,6 @@
     "truffle-solidity-loader": "git+https://github.com/sogoiii/truffle-solidity-loader.git#1f1e213d52f033b6863218307b8968ae68220fe1",
     "web3": "^0.18.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.4.1"
   }
 }

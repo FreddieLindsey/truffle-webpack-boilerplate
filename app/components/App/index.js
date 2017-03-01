@@ -55,6 +55,7 @@ class App extends Component {
 
   handleUpdateValue() {
     const newValue = this.textInput.value
+    if (!newValue || newValue.length < 1) return
     const self = this
     let instance_;
     window.contracts.SimpleStorage.deployed().then((instance) => {
@@ -62,12 +63,12 @@ class App extends Component {
         newValue,
         { from: this.props.accounts.default }
       )
-    }).then((v) => {
-      console.dir(v)
+    }).then((receipt) => {
+      console.dir(receipt)
       let state = self.state
       state.contracts.SimpleStorage.value = newValue
-      self.textInput.value = ''
       self.setState(state)
+      self.textInput.value = ''
     }).catch((err) => {
       console.dir(err)
     })
