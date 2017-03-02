@@ -60,16 +60,17 @@ class App extends Component {
     return (
       <div className="app" >
         <h1>Simple Storage</h1>
-        <h2>Example basic storage application running on Ethereum</h2>
 
         { address ?
           <div>
-            <h3>
+            <h4>
               SimpleStorage deployed at { address }
-            </h3>
+            </h4>
 
             { value &&
               <div>
+                <hr />
+                <br />
                 Current value: { value.toString() }
               </div>
             }
@@ -94,9 +95,13 @@ class App extends Component {
         }
 
         <br />
+        <hr />
+
         <span className="hint">
-          <strong>Hint:</strong> open the browser developer console to
-          view any errors and warnings.</span>
+          <h4>Hint:</h4>
+          Open the browser developer console to
+          view <strong>redux state changes</strong>, errors and warnings.
+        </span>
       </div>
     )
   }
