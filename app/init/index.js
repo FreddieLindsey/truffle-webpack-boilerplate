@@ -5,6 +5,7 @@ import { web3 } from './web3'
 window.web3 = web3
 window.contracts = initialise(contractArtifacts, web3)
 // window.ipfs = ipfs
+window.ipfs = window.IpfsApi()
 
 if (module.hot) {
   let { contractArtifacts } = require('./contracts')
@@ -12,4 +13,5 @@ if (module.hot) {
 
   window.contracts = initialise(contractArtifacts, web3)
   // window.ipfs = ipfs
+  window.ipfs = window.IpfsApi()
 }

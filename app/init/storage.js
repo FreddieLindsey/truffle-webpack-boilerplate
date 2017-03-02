@@ -1,6 +1,4 @@
-const ipfs = require('ipfs-api')()
-
-console.dir(IpfsAPI)
+import ipfs from 'ipfs-api'
 
 export {
   ipfs
