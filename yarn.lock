@@ -1708,7 +1708,7 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concat-stream@^1.4.6, concat-stream@^1.5.2:
+concat-stream@^1.4.6, concat-stream@^1.5.2, concat-stream@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.0.tgz#0aac662fd52be78964d5532f694784e70110acf7"
   dependencies:
@@ -3033,6 +3033,10 @@ glob-base@^0.3.0:
     glob-parent "^2.0.0"
     is-glob "^2.0.0"
 
+glob-escape@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/glob-escape/-/glob-escape-0.0.2.tgz#9c27f7821ed1c1377582f3efd9558e3f675628ed"
+
 glob-parent@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-2.0.0.tgz#81383d72db054fcccf5336daa902f182f6edbb28"
@@ -3534,6 +3538,39 @@ ipfs-api@^11.1.0:
     streamifier "^0.1.1"
     tar-stream "^1.5.2"
 
+ipfs-api@^12.1.7:
+  version "12.1.7"
+  resolved "https://registry.yarnpkg.com/ipfs-api/-/ipfs-api-12.1.7.tgz#1d58c12683aa12f7529cd52b9dff18bb6915bbaa"
+  dependencies:
+    async "^2.1.4"
+    bs58 "^4.0.0"
+    cids "~0.4.1"
+    concat-stream "^1.6.0"
+    detect-node "^2.0.3"
+    flatmap "0.0.3"
+    glob "^7.1.1"
+    glob-escape "0.0.2"
+    ipfs-block "~0.5.5"
+    ipfs-unixfs "~0.1.10"
+    ipld-dag-pb "~0.9.5"
+    is-ipfs "~0.3.0"
+    isstream "^0.1.2"
+    lru-cache "^4.0.2"
+    multiaddr "^2.2.1"
+    multihashes "~0.3.3"
+    multipart-stream "^2.0.1"
+    ndjson "^1.5.0"
+    once "^1.4.0"
+    peer-id "~0.8.2"
+    peer-info "~0.8.3"
+    promisify-es6 "^1.0.2"
+    pump "^1.0.2"
+    qs "^6.3.0"
+    readable-stream "1.1.14"
+    stream-http "^2.6.3"
+    streamifier "^0.1.1"
+    tar-stream "^1.5.2"
+
 ipfs-bitswap@^0.8.1:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/ipfs-bitswap/-/ipfs-bitswap-0.8.3.tgz#3545d91011d3562a8ccf878fc787e3b7bb55e7e3"
@@ -3615,7 +3652,7 @@ ipfs-unixfs-engine@^0.13.0:
     pull-traverse "^1.0.3"
     pull-write "^1.1.1"
 
-ipfs-unixfs@^0.1.5:
+ipfs-unixfs@^0.1.5, ipfs-unixfs@~0.1.10:
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/ipfs-unixfs/-/ipfs-unixfs-0.1.10.tgz#d107215e6021d52313dd43ad5fc711313e60f106"
   dependencies:
@@ -3705,7 +3742,7 @@ ipld-dag-pb@^0.8.0:
     pull-traverse "^1.0.3"
     stable "^0.1.5"
 
-ipld-dag-pb@^0.9.0:
+ipld-dag-pb@^0.9.0, ipld-dag-pb@~0.9.5:
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/ipld-dag-pb/-/ipld-dag-pb-0.9.5.tgz#e8c7dc61a4dd83a8658735559264ee4fedd8b635"
   dependencies:
@@ -4626,7 +4663,7 @@ lru-cache@2:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
-lru-cache@^4.0.1:
+lru-cache@^4.0.1, lru-cache@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.0.2.tgz#1d17679c069cda5d040991a09dbc2c0db377e55e"
   dependencies:
@@ -4951,7 +4988,7 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
-ndjson@^1.4.3:
+ndjson@^1.4.3, ndjson@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/ndjson/-/ndjson-1.5.0.tgz#ae603b36b134bcec347b452422b0bf98d5832ec8"
   dependencies:
@@ -6014,7 +6051,7 @@ pull-zip@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pull-zip/-/pull-zip-2.0.1.tgz#e0641ceaff964af27596daac0700e79b381028f5"
 
-pump@^1.0.0, pump@^1.0.1:
+pump@^1.0.0, pump@^1.0.1, pump@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pump/-/pump-1.0.2.tgz#3b3ee6512f94f0e575538c17995f9f16990a5d51"
   dependencies:
@@ -6197,7 +6234,7 @@ readable-stream@1.0, readable-stream@~1.0.17, readable-stream@~1.0.27-1:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@1.1.x, readable-stream@^1.1.14, readable-stream@~1.1.9:
+readable-stream@1.1.14, readable-stream@1.1.x, readable-stream@^1.1.14, readable-stream@~1.1.9:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
@@ -6972,7 +7009,7 @@ stream-browserify@^2.0.1:
     inherits "~2.0.1"
     readable-stream "^2.0.2"
 
-stream-http@^2.3.1, stream-http@^2.5.0:
+stream-http@^2.3.1, stream-http@^2.5.0, stream-http@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/stream-http/-/stream-http-2.6.3.tgz#4c3ddbf9635968ea2cfd4e48d43de5def2625ac3"
   dependencies:
