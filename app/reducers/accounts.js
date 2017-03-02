@@ -4,7 +4,7 @@ import {
   ACCOUNTS_INIT_ERROR
 } from '../actions'
 
-export const accounts = (state = {}, action) => {
+const accounts = (state = {}, action) => {
   switch (action.type) {
     case ACCOUNTS_INIT_SUCCESS:
       return handleAccountsInitSuccess(state, action.accounts)
@@ -18,20 +18,16 @@ export const accounts = (state = {}, action) => {
 const handleAccountsInitSuccess = (state, accounts) => {
   return {
     ...state,
-    accounts: {
-      ...state.accounts,
-      all: accounts,
-      default: accounts[0]
-    }
+    all: accounts,
+    default: accounts[0]
   }
 }
 
 const handleAccountsInitError = (state, error) => {
   return {
     ...state,
-    accounts: {
-      ...state.accounts,
-      error
-    }
+    error
   }
 }
+
+export default accounts

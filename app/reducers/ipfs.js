@@ -1,29 +1,23 @@
 const ipfs = (ipfsState = {}, action) => {
   // Pre-checks
   let state = ipfsState
-  if (!action.info && !checkIpfs(state)) {
-    return {
-      ...state,
-      error: 'No IPFS found!'
-    }
-  } else if (!checkIpfs(state)) {
-    state = getIpfs()
+  if (!action.info || !state.instance) {
+    state = getIpfs(state)
   }
+  if (!state.instance) return state
 
   // Handler for actions
   switch (action.type) {
 
   }
+  return state
 }
 
 const getIpfs = (state) => {
+  console.log('GET IPFS')
   return (typeof window.ipfs === 'object') ?
-    { ...state, ipfs: window.ipfs } :
-    state
-}
-
-const checkIpfs = (state) => {
-  return !!state.ipfs
+    { ...state, instance: window.ipfs } :
+    { ...state, error: 'No IPFS found!' }
 }
 
 export default ipfs

@@ -2,14 +2,25 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Web3 from 'web3'
 
+import {
+  simpleStorageAddressGet,
+  simpleStorageValueGet,
+  simpleStorageValueSet
+} from '../../actions'
+
 const mapStateToProps = (state) => {
   return {
-    ...state.accounts
+    accounts: state.accounts,
+    SimpleStorage: state.SimpleStorage
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    handleAddressGet: () => simpleStorageAddressGet(dispatch),
+    handleValueGet: () => simpleStorageValueGet(dispatch),
+    handleValueSet: (v, a) => simpleStorageValueSet(dispatch, v, a)
+  }
 }
 
 class App extends Component {
@@ -17,109 +28,75 @@ class App extends Component {
   static displayName = 'App'
   static propTypes = {
     accounts: PropTypes.shape({
-      default: PropTypes.string.isRequired
-    })
+      all: PropTypes.arrayOf(PropTypes.string),
+      default: PropTypes.string
+    }).isRequired,
+    SimpleStorage: PropTypes.shape({
+      address: PropTypes.string,
+      value: PropTypes.any
+    }).isRequired,
+
+    handleAddressGet: PropTypes.func.isRequired,
+    handleValueGet: PropTypes.func.isRequired,
+    handleValueSet: PropTypes.func.isRequired
   }
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      contracts: {
-        SimpleStorage: {
-          address: undefined,
-          value: undefined
-        }
-      }
-    }
+  componentDidMount () {
+    this.props.handleAddressGet()
+    this.props.handleValueGet()
   }
 
-  handleGetAddress() {
-    const self = this
-    window.contracts.SimpleStorage.deployed().then((instance) => {
-      let state = self.state
-      state.contracts.SimpleStorage.address = instance.address
-      self.setState(state)
-    })
-  }
-
-  handleGetValue() {
-    const self = this
-    window.contracts.SimpleStorage.deployed().then((instance) => {
-      return instance.get()
-    }).then((v) => {
-      let state = self.state
-      state.contracts.SimpleStorage.value = v
-      self.setState(state)
-    })
-  }
-
-  handleUpdateValue() {
-    const newValue = this.textInput.value
-    if (!newValue || newValue.length < 1) return
-    const self = this
-    let instance_;
-    window.contracts.SimpleStorage.deployed().then((instance) => {
-      return instance.set(
-        newValue,
-        { from: this.props.accounts.default }
-      )
-    }).then((receipt) => {
-      console.dir(receipt)
-      let state = self.state
-      state.contracts.SimpleStorage.value = newValue
-      self.setState(state)
-      self.textInput.value = ''
-    }).catch((err) => {
-      console.dir(err)
-    })
+  handleValueSet () {
+    let newValue = this.textInput.value
+    if (!newValue || newValue === '') return
+    this.props.handleValueSet(newValue, this.props.accounts.default)
   }
 
   render () {
     const {
       address,
       value
-    } = this.state.contracts.SimpleStorage
+    } = this.props.SimpleStorage
     return (
       <div className="app" >
         <h1>Simple Storage</h1>
         <h2>Example basic storage application running on Ethereum</h2>
 
-        { !address &&
-          <button onClick={ () => { this.handleGetAddress() } }>
-            Get address of contract
-          </button>
-        }
-
-        { address &&
+        { address ?
           <div>
             <h3>
               SimpleStorage deployed at { address }
             </h3>
-            { !value &&
-              <button onClick={ () => { this.handleGetValue() }}>
+
+            { value &&
+              <div>
+                Current value: { value.toString() }
+              </div>
+            }
+
+            { value ?
+              <div>
+                <input ref={(i) => { this.textInput = i }} />
+                <button onClick={ () => { this.handleValueSet() }}>
+                  Update Value
+                </button>
+              </div>
+              :
+              <button onClick={ () => { this.props.handleValueGet() }}>
                 Get value of contract
               </button>
             }
           </div>
-        }
-
-        { value &&
-          <div>
-            Current value: { value.toString() }
-          </div>
-        }
-
-        { address && value &&
-          <div>
-            <input ref={(i) => { this.textInput = i }} />
-            <button onClick={() => { this.handleUpdateValue() }}>
-              Update Value
-            </button>
-          </div>
+          :
+          <button onClick={ () => this.props.handleAddressGet() }>
+            Get address of contract
+          </button>
         }
 
         <br />
-        <span className="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+        <span className="hint">
+          <strong>Hint:</strong> open the browser developer console to
+          view any errors and warnings.</span>
       </div>
     )
   }
