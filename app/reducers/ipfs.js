@@ -14,7 +14,6 @@ const ipfs = (ipfsState = {}, action) => {
 }
 
 const getIpfs = (state) => {
-  console.log('GET IPFS')
   return (typeof window.ipfs === 'object') ?
     { ...state, instance: window.ipfs } :
     { ...state, error: 'No IPFS found!' }

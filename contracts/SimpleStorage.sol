@@ -3,8 +3,7 @@ pragma solidity ^0.4.8;
 contract SimpleStorage {
   uint public storedData;
 
-  function SimpleStorage(/* uint initialValue */) {
-    /*storedData = initialValue;*/
+  function SimpleStorage() {
     storedData = 10;
   }
 
