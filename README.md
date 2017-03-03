@@ -4,7 +4,7 @@
 
 ## Purpose
 
-There are quite a number of truffle boilerplates out there, but none that really completely worked out of the box.
+There are quite a number of truffle boilerplates out there, but none that really completely worked out of the box. This is particularly the case with Truffle version 3.x. This boilerplate works completely with version 3.x as far as I know.
 
 Here, just run the following:
 
@@ -20,3 +20,7 @@ Have fun!
 ## Docker
 
 I couldn't find the Docker image referenced in the [testrpc repository](https://github.com/ethereumjs/testrpc). I have therefore built it and pushed it publicly to Docker. Please kindly recognise that this work is not my own, but that of [ethereumjs](https://github.com/ethereumjs).
+
+## Issues
+
+Please feel free to contact me or submit a PR if you find any issues you'd like to share.
