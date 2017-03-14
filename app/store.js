@@ -12,7 +12,7 @@ let middleware = (process.env.NODE_ENV !== 'production')
   ? applyMiddleware(thunk, logger())
   : applyMiddleware(thunk)
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ // || compose
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(reducers, {}, composeEnhancer(middleware))
 
