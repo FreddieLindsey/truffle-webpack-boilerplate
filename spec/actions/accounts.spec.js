@@ -1,11 +1,11 @@
 import { expect } from 'chai'
 
-import { web3 } from '../../app/init/web3'
+import { web3 } from '../../client/init/web3'
 
 import {
   accountsInitPending,
   accountsInitSuccess
-} from '../../app/actions/accounts'
+} from '../../client/actions/accounts'
 
 describe('Actions: accounts', () => {
   it('should provide a blank account init pending', () => {

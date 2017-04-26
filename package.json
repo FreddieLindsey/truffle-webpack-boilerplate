@@ -60,5 +60,7 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "flow-bin": "^0.44.2"
+  }
 }
