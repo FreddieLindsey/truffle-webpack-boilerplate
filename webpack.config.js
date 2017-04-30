@@ -41,7 +41,23 @@ module.exports = {
       },
       {
         test: /\.(s)?css$/,
-        loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap'
+        use: [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              camelCase: true,
+              importLoaders: 1,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              modules: true,
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
+        ]
       },
       {
         test: /\.(png|jpg)$/,
