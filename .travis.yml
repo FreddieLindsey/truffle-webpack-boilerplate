@@ -1,31 +1,21 @@
-sudo: required
-
 dist: trusty
 
 language: node_js
+
+cache: yarn
 
 notification:
   email:
     success: never
     failure: always
 
-services:
-  - docker
-
-env:
-  DOCKER_COMPOSE_VERSION: 1.11.2
-
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-
 install:
-  - docker-compose pull
-  - npm install
+  - yarn install
+
+before_script:
+  - yarn run testrpc > ./testrpc.log &
 
 script:
-  - docker-compose up -d
-  - npm run test-contracts
-  - npm run test-web
+  - yarn run build
+  - yarn run test-contracts
+  - yarn run test-web
