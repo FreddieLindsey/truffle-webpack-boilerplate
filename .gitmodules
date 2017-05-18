@@ -1,3 +1,0 @@
-[submodule "submodules/testrpc"]
-	path = submodules/testrpc
-	url = git@github.com:ethereumjs/testrpc
