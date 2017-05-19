@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import Web3 from 'web3'
 
 import {
+  BrowserRouter
+} from 'react-router-dom'
+
+import {
   simpleStorageAddressGet,
   simpleStorageValueGet,
   simpleStorageValueSet
@@ -60,44 +64,46 @@ class App extends Component {
       value
     } = this.props.SimpleStorage
     return (
-      <div className="app" >
-        <h1 className={ styles.title } >
-          Simple Storage
-        </h1>
+      <BrowserRouter >
+        <div className="app" >
+          <h1 className={ styles.title } >
+            Simple Storage
+          </h1>
 
-        { address ?
-          <div>
-            <h4>
-              SimpleStorage deployed at { address }
-            </h4>
+          { address ?
+            <div>
+              <h4>
+                SimpleStorage deployed at { address }
+              </h4>
 
-            { value &&
-              <div>
-                <hr />
-                <br />
-                Current value: { value.toString() }
-              </div>
-            }
+              { value &&
+                <div>
+                  <hr />
+                  <br />
+                  Current value: { value.toString() }
+                </div>
+              }
 
-            { value ?
-              <div>
-                <input ref={(i) => { this.textInput = i }} />
-                <button onClick={ () => { this.handleValueSet() }}>
-                  Update Value
+              { value ?
+                <div>
+                  <input ref={(i) => { this.textInput = i }} />
+                  <button onClick={ () => { this.handleValueSet() }}>
+                    Update Value
+                  </button>
+                </div>
+                :
+                <button onClick={ () => { this.props.handleValueGet() }}>
+                  Get value of contracts
                 </button>
-              </div>
-              :
-              <button onClick={ () => { this.props.handleValueGet() }}>
-                Get value of contract
-              </button>
-            }
-          </div>
-          :
-          <button onClick={ () => this.props.handleAddressGet() }>
-            Get address of contract
-          </button>
-        }
-      </div>
+              }
+            </div>
+            :
+            <button onClick={ () => this.props.handleAddressGet() }>
+              Get address of contract
+            </button>
+          }
+        </div>
+      </BrowserRouter>
     )
   }
 
