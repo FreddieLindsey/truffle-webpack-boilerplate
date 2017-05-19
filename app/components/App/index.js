@@ -8,6 +8,8 @@ import {
   simpleStorageValueSet
 } from '../../actions'
 
+import styles from './index.scss'
+
 const mapStateToProps = (state) => {
   return {
     accounts: state.accounts,
@@ -59,7 +61,9 @@ class App extends Component {
     } = this.props.SimpleStorage
     return (
       <div className="app" >
-        <h1>Simple Storage</h1>
+        <h1 className={ styles.title } >
+          Simple Storage
+        </h1>
 
         { address ?
           <div>
@@ -93,15 +97,6 @@ class App extends Component {
             Get address of contract
           </button>
         }
-
-        <br />
-        <hr />
-
-        <span className="hint">
-          <h4>Hint:</h4>
-          Open the browser developer console to
-          view <strong>redux state changes</strong>, errors and warnings.
-        </span>
       </div>
     )
   }

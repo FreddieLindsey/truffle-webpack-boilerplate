@@ -11,7 +11,10 @@ module.exports = {
   devServer: {
     stats: 'errors-only',
   },
-  entry: './app/index.js',
+  entry: [
+    'react-hot-loader/patch',
+    './app/index.js'
+  ],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'app.js'
